@@ -1,13 +1,34 @@
 // Samuel Dameg
 
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
-function Navigation() {
+function Navigation({ cartCount }) {
     return (
-        <nav>
-            <Link to="/">Home</Link>
-            <Link to="/order">Order</Link>
-            <Link to="/registration">Registration</Link>
+        <nav className="nav-links">
+            <NavLink
+                to="/"
+                end
+                className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}
+            >
+                Home
+            </NavLink>
+            <NavLink
+                to="/order"
+                className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}
+            >
+                <span className="nav-cart-badge">
+                    Order
+                    {cartCount > 0 && (
+                        <span className="cart-badge">{cartCount}</span>
+                    )}
+                </span>
+            </NavLink>
+            <NavLink
+                to="/registration"
+                className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}
+            >
+                Register
+            </NavLink>
         </nav>
     );
 }

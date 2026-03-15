@@ -1,38 +1,67 @@
-/* Samuel Dameg - Oregon State Theme */
+/* ============================================
+   FRESH CART — Design System
+   OSU Orange accent, clean modern layout
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* Brand */
+  --osu: #D73F09;
+  --osu-dark: #b53207;
+  --osu-dim: rgba(215, 63, 9, 0.12);
+  --osu-glow: rgba(215, 63, 9, 0.25);
+
+  /* Neutrals */
+  --bg: #f8f9fa;
+  --surface: #ffffff;
+  --border: #e5e7eb;
+  --border-subtle: #f0f0f0;
+
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+  --text-muted: #9ca3af;
+
+  /* Status */
+  --green: #10b981;
+  --green-dim: rgba(16, 185, 129, 0.1);
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-lg: 20px;
+
+  /* Shadow */
+  --shadow-sm: 0 1px 4px rgba(0,0,0,0.06);
+  --shadow: 0 2px 12px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+  --shadow-osu: 0 4px 20px rgba(215, 63, 9, 0.25);
+
+  /* Typography */
+  font-family: 'Inter', system-ui, sans-serif;
   line-height: 1.5;
-  font-weight: 400;
-
-  color: #000000;
-  background-color: #ffffff;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #D73F09;
-  text-decoration: inherit;
-}
-
-a:hover {
-  color: #000000;
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
+  background: var(--bg);
+  color: var(--text-primary);
   min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
 }

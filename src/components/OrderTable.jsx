@@ -2,22 +2,18 @@
 
 import OrderRow from './OrderRow';
 
-function OrderTable({ items }) {
+function OrderTable({ items, cart, onUpdate }) {
     return (
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                </tr>
-            </thead>
-            <tbody>
-                {items.map((item, index) => (
-                    <OrderRow key={index} item={item} />
-                ))}
-            </tbody>
-        </table>
+        <div className="product-grid">
+            {items.map(item => (
+                <OrderRow
+                    key={item.id}
+                    item={item}
+                    quantity={cart[item.id] || 0}
+                    onUpdate={onUpdate}
+                />
+            ))}
+        </div>
     );
 }
 

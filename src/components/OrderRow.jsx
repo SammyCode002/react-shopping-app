@@ -2,13 +2,20 @@
 
 import SelectQuantity from './SelectQuantity';
 
-function OrderRow({ item }) {
+function OrderRow({ item, quantity, onUpdate }) {
     return (
-        <tr>
-            <td>{item.name}</td>
-            <td>${item.price.toFixed(2)}</td>
-            <td><SelectQuantity /></td>
-        </tr>
+        <div className={`product-card${quantity > 0 ? ' in-cart' : ''}`}>
+            <div className="product-emoji">{item.emoji}</div>
+            <div className="product-info">
+                <div className="product-category">{item.category}</div>
+                <div className="product-name">{item.name}</div>
+                <div className="product-price">${item.price.toFixed(2)}</div>
+            </div>
+            <SelectQuantity
+                quantity={quantity}
+                onChange={(qty) => onUpdate(item.id, qty)}
+            />
+        </div>
     );
 }
 
