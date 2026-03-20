@@ -1,8 +1,21 @@
 // Samuel Dameg
 
+import { useState, useMemo } from 'react';
+import { useCart } from '../context/CartContext';
 import OrderTable from '../components/OrderTable';
+import items from '../data/items';
 
-function OrderPage({ items, cart, cartCount, cartTotal, onUpdate, onClear }) {
+const CATEGORIES = ['All', ...new Set(items.map(i => i.category))];
+
+function OrderPage() {
+    const { cartCount, cartTotal, clearCart } = useCart();
+    const [activeCategory, setActiveCategory] = useState('All');
+
+    const filteredItems = useMemo(
+        () => activeCategory === 'All' ? items : items.filter(i => i.category === activeCategory),
+        [activeCategory]
+    );
+
     return (
         <>
             <div className="page-header">
@@ -12,7 +25,19 @@ function OrderPage({ items, cart, cartCount, cartTotal, onUpdate, onClear }) {
                 </p>
             </div>
 
-            <OrderTable items={items} cart={cart} onUpdate={onUpdate} />
+            <div className="category-filters">
+                {CATEGORIES.map(cat => (
+                    <button
+                        key={cat}
+                        className={`filter-btn${activeCategory === cat ? ' active' : ''}`}
+                        onClick={() => setActiveCategory(cat)}
+                    >
+                        {cat}
+                    </button>
+                ))}
+            </div>
+
+            <OrderTable items={filteredItems} />
 
             {cartCount > 0 && (
                 <div className="cart-bar">
@@ -22,7 +47,7 @@ function OrderPage({ items, cart, cartCount, cartTotal, onUpdate, onClear }) {
                     <div className="cart-bar-total">
                         ${cartTotal.toFixed(2)}
                     </div>
-                    <button className="cart-bar-clear" onClick={onClear}>
+                    <button className="cart-bar-clear" onClick={clearCart}>
                         Clear
                     </button>
                 </div>

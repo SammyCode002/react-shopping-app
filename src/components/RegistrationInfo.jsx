@@ -27,6 +27,8 @@ function RegistrationInfo() {
             return;
         }
         setErrors({});
+        setName(name.trim());
+        setEmail(email.trim().toLowerCase());
         setSubmitted(true);
     };
 
@@ -58,6 +60,7 @@ function RegistrationInfo() {
                         id="name"
                         placeholder="Your name"
                         value={name}
+                        maxLength={80}
                         onChange={(e) => { setName(e.target.value); setErrors(prev => ({ ...prev, name: '' })); }}
                     />
                     {errors.name && <div className="form-error">{errors.name}</div>}
@@ -71,6 +74,7 @@ function RegistrationInfo() {
                         id="email"
                         placeholder="you@example.com"
                         value={email}
+                        maxLength={254}
                         onChange={(e) => { setEmail(e.target.value); setErrors(prev => ({ ...prev, email: '' })); }}
                     />
                     {errors.email && <div className="form-error">{errors.email}</div>}

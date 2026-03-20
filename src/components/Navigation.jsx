@@ -1,8 +1,10 @@
 // Samuel Dameg
 
 import { NavLink } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 
-function Navigation({ cartCount }) {
+function Navigation() {
+    const { cartCount } = useCart();
     return (
         <nav className="nav-links">
             <NavLink

@@ -1,20 +1,16 @@
 // Samuel Dameg
 
+import React from 'react';
 import OrderRow from './OrderRow';
 
-function OrderTable({ items, cart, onUpdate }) {
+function OrderTable({ items }) {
     return (
         <div className="product-grid">
             {items.map(item => (
-                <OrderRow
-                    key={item.id}
-                    item={item}
-                    quantity={cart[item.id] || 0}
-                    onUpdate={onUpdate}
-                />
+                <OrderRow key={item.id} item={item} />
             ))}
         </div>
     );
 }
 
-export default OrderTable;
+export default React.memo(OrderTable);

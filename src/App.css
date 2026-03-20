@@ -260,6 +260,37 @@
   line-height: 1.6;
 }
 
+/* ---- Category Filters ---- */
+.category-filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.filter-btn {
+  padding: 7px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-secondary);
+  transition: all 0.15s;
+}
+
+.filter-btn:hover {
+  border-color: var(--osu);
+  color: var(--osu);
+}
+
+.filter-btn.active {
+  background: var(--osu);
+  border-color: var(--osu);
+  color: white;
+  font-weight: 600;
+}
+
 /* ---- Product Grid ---- */
 .product-grid {
   display: grid;

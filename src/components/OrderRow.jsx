@@ -1,8 +1,18 @@
 // Samuel Dameg
 
+import React, { useCallback } from 'react';
+import { useCart } from '../context/CartContext';
 import SelectQuantity from './SelectQuantity';
 
-function OrderRow({ item, quantity, onUpdate }) {
+function OrderRow({ item }) {
+    const { cart, updateCart } = useCart();
+    const quantity = cart[item.id] || 0;
+
+    const handleChange = useCallback(
+        (qty) => updateCart(item.id, qty),
+        [item.id, updateCart]
+    );
+
     return (
         <div className={`product-card${quantity > 0 ? ' in-cart' : ''}`}>
             <div className="product-emoji">{item.emoji}</div>
@@ -11,12 +21,9 @@ function OrderRow({ item, quantity, onUpdate }) {
                 <div className="product-name">{item.name}</div>
                 <div className="product-price">${item.price.toFixed(2)}</div>
             </div>
-            <SelectQuantity
-                quantity={quantity}
-                onChange={(qty) => onUpdate(item.id, qty)}
-            />
+            <SelectQuantity quantity={quantity} onChange={handleChange} />
         </div>
     );
 }
 
-export default OrderRow;
+export default React.memo(OrderRow);
