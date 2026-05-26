@@ -1,4 +1,4 @@
-# FreshCart — React Shopping App
+# FreshCart - React Shopping App
 
 A grocery ordering SPA built with React and React Router. Started as an OSU CS 290 assignment, redesigned into a fully featured shopping experience.
 
