@@ -2,14 +2,25 @@
 
 A grocery ordering SPA built with React and React Router. Started as an OSU CS 290 assignment, redesigned into a fully featured shopping experience.
 
+## Screenshots
+
+### Home
+![FreshCart home page](screenshots/home.png)
+
+### Order
+![Order page with live cart total](screenshots/order.png)
+
+### Register
+![Registration form](screenshots/register.png)
+
 ## Features
 
 - **Product card grid** with emoji, category, name, and price per item
-- **Live cart total** — sticky bar slides up as you add items, shows count and running total
+- **Live cart total** in a sticky bar that slides up as you add items, showing the count and running total
 - **Cart state** lifted to app level so total is always accurate across the page
 - **Active nav highlighting** with item count badge on the Order link
 - **Registration form** with inline validation and a success state (no alert popups)
-- **Responsive layout** — works on mobile and desktop
+- **Responsive layout** that works on mobile and desktop
 - Oregon State University orange accent theme (`#D73F09`)
 
 ## Tech Stack
